@@ -16,9 +16,12 @@ runs:
   - id: Runt tests with Tox
     run: |      
       tox
+    shell: bash
   - id: Run bandit
     run: |
       bandit -r ${{ inputs.source-code-folder-name }} -f json -o reports/bandit.json || true
+    shell: bash
   - name: Run pylint
     id: |
       pylint ${{ inputs.source-code-folder-name }} -r n --msg-template="{path}:{line}: [{msg_id}({symbol}), {obj}] {msg}" --exit-zero > pylint.out
+    shell: bash
