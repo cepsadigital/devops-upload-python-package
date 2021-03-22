@@ -2,7 +2,7 @@ name: 'Run Tests and Code Analysis'
 description: 'GitHub Composite Action to Run Tests and Code Analysis'
 inputs:
   source-code-folder-name:
-    description: 'PyLint and Bandit Analysis Source code base path'
+    description: 'pylint and Bandit Analysis Source code base path'
     required: true
     default: 'src'  
   python-version:
