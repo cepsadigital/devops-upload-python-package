@@ -1,0 +1,46 @@
+name: 'Upload Python Package to Artifactory'
+description: 'GitHub Composite Action to upload Python Package to Artifactory'
+inputs:
+  python-version:
+    description: 'Python Version'
+    required: true
+    default: '3.6'
+  bandit-lint-source-code:
+    description: 'PyLint and Bandit Analysis Source code base path'
+    required: true
+    default: 'src/'
+  repository-host:
+    description: 'Artifactory Repository host to upload package
+    required: true
+    default: '3.6'    
+runs:
+  using: "composite"
+  steps:
+  - name: Set up Python
+    uses: actions/setup-python@v2
+    with:
+      python-version: ${{ inputs.python-version }}
+  - name: Run tests
+    run: |
+      python -m pip install --upgrade pip
+      pip install tox && tox
+  - name: Static Code Analysis
+    run: |
+      mkdir -p reports
+      pip install pylint bandit
+      pylint -r y -s y -f json --exit-zero ${{ inputs.bandit-lint-source-code }} --exit-zero > reports/pylint.json
+      bandit -r ${{ inputs.bandit-lint-source-code }} -f json -o reports/bandit.json || true
+  - name: SonarQube Scan
+    uses: cepsadigital/devops-sonar-github-action@master
+    with:
+      host: ${{ secrets.TD_SONAR_HOST }}
+      login: ${{ secrets.TD_SONAR_USER }}
+      password: ${{ secrets.TD_SONAR_PSW }}         
+  - name: Build and publish
+    env:        
+      ARTIFACTORY_USER: ${{ secrets.TD_ARTIFACTORY_USER }}
+      ARTIFACTORY_PWD: ${{ secrets.TD_ARTIFACTORY_PWD }}
+    run: |
+      pip install setuptools wheel twine
+      python setup.py sdist bdist_wheel
+      twine upload --repository-url ${{ inputs.repository-host }} -u ${ARTIFACTORY_USER} -p ${ARTIFACTORY_PWD} --non-interactive dist/*
