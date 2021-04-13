@@ -12,7 +12,7 @@ The `github-action-devops-python-testing` Github Action will run your tests with
 
 * `tox.ini` file must exist in the root of the project. ([example](https://cloudfirst.cepsacorp.com/books/buenas-pr%C3%A1cticas/page/testing-en-python#bkmrk-instalando-nuestras-))
 
-## Components versions:
+## Components versions used:
 
 - Tox: `3.X.X (latest)`
 - pylint: `2.X.X (latest)`
