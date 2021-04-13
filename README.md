@@ -6,7 +6,7 @@ The `github-action-devops-python-testing` Github Action will run your tests with
 
 | Name | Description | Required |Default |
 | --- | --- | --- | --- |
-| `source-code-folder-name` | pylint and Bandit Analysis Source code base path | :heavy_check_mark: | |
+| `source-code-folder-name` | Pylint and Bandit analysis source code base path | :heavy_check_mark: | |
 
 ## Requirements
 
