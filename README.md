@@ -28,7 +28,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - name: Run Tests and Code Analysis
+    - name: Run Python Tests and Code Analysis
       uses: cepsadigital/github-action-devops-python-testing@1.0.0
       with:
         source-code-folder-name: 'src'
