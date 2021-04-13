@@ -11,7 +11,7 @@ runs:
     run: |
       python -m pip install --upgrade pip
       mkdir -p reports
-      pip install tox pylint bandit
+      pip install "tox>=3,<4" pylint bandit
     shell: bash
   - id: runt-tests-with-tox
     run: |      
