@@ -59,7 +59,7 @@ jobs:
         source-code-folder-name: 'src'
 ```
 
-### Example 2 (With private libraries in testing)
+### Example 2. (With private libraries in testing)
 
 ```yaml
 on:
