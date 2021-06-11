@@ -23,8 +23,8 @@ skipsdist = True
 
 [testenv]
 setenv = 
-		AWS_DEFAULT_REGION=eu-west-1 
-		PIP_EXTRA_INDEX_URL=https://${INPUT_ARTIFACTORY-USER}:${INPUT_ARTIFACTORY-PSW}@cepsa.jfrog.io/artifactory/api/pypi/td-pypi/simple
+	AWS_DEFAULT_REGION=eu-west-1 
+	PIP_EXTRA_INDEX_URL=https://${INPUT_ARTIFACTORY-USER}:${INPUT_ARTIFACTORY-PSW}@cepsa.jfrog.io/artifactory/api/pypi/td-pypi/simple
 
 deps =
     -r{toxinidir}/requirements.txt
