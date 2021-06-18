@@ -1,4 +1,4 @@
-# Run Python Tests and Code Analysis GitHub Action  2.0.0
+# Run Python Tests and Code Analysis GitHub Action  1.1.0
 
 The `github-action-devops-python-testing` Github Action will run your tests with **Tox and generate coverage, pylint and bandit reports.**  
 The input variables: `artifactory-user`and `artifactory-psw` are mandatory when you need to install private libraries from Artifactory in tests. 
